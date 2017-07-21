@@ -3,11 +3,14 @@ Student Project for using Python Tracker with performance metrics projected alon
 
 # Dependencies
 Language: Python 3 or later
+
 Libraries, not in the standard Python3 distribution: OpenCV and its contrib Modules.
 
 Installation instructions can be found on the following links:
 
 https://breakthrough.github.io/Installing-OpenCV/
+
+blog.mdda.net/oss/2016/08/06/opencv-on-fedora-24
 
 For Fedora-25:  http://charithe.github.io/installing-opencv-320-on-fedora-25.html
 
