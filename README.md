@@ -15,6 +15,7 @@ For Fedora-25:  http://charithe.github.io/installing-opencv-320-on-fedora-25.htm
 
 # Status
 Jul 6, 2017 :::: Initial Commit
+
 Jul 20, 2017 :::: Modification of the READMEs
 
 # License
