@@ -2,8 +2,14 @@
 Actual Work
 Chhewang Sherpa
 '''
+import imutils
+from imutils.video import VideoStream
+from imutils import face_utils
 import cv2
 
+'''
+Hard Coded HaarFacial Cascades
+'''
 faceHaarCascade ='reference_materials/haarcascade_frontalface_default.xml'
 eyeHaarCascarde ='reference_materials/haarcascade_eye.xml'
 
@@ -39,14 +45,18 @@ if __name__ == '__main__':
 
     #Video Capture CV2 method
     #Value zero reflects default video capture
-    deviceNum=0
-    cam = cv2.VideoCapture(deviceNum)
-    if not(cam.isOpened()):
-        print("\nVideo device could not be opened\n")
-        exit(1)
+    try:
+        cam = VideoStream().start()
+    except:
+        deviceNum=0
+        cam = cv2.VideoCapture(deviceNum)
+        if not(cam.isOpened()):
+            print("\nVideo device could not be opened\n")
+            exit(1)
 
     while True:
-        ret, img = cam.read()
+        img = cam.read()
+        img = imutils.resize(img, width=400)
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         #gray = cv2.equalizeHist(gray)
 
@@ -55,9 +65,9 @@ if __name__ == '__main__':
 
         color=(11,134,184)
         #Color is in BGR color, RGB backwards
-        drawDetectBox(vis, rects,color)
+        drawDetectBox(img, rects,color)
 
-        cv2.imshow('Simple Detect', vis)
+        cv2.imshow('Simple Detect', img)
 
         if cv2.waitKey(20) == 27:
             break

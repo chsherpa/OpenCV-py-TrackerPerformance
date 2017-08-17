@@ -1,37 +1,25 @@
 '''
 Test program from https://www.learnopencv.com/object-tracking-using-opencv-cpp-python/
-Source: https://github.com/shantnu/Webcam-Face-Detect
 '''
 
+import imutils
+from imutils.video import VideoStream
+from imutils import face_utils
+import datetime
+import argparse
+import imutils
+import time
+import dlib
 import cv2
 
 cascPath = './haarcascade_frontalface_default.xml'
 faceCascade = cv2.CascadeClassifier(cascPath)
 
-vc = cv2.VideoCapture(0)
+shape_predict = './shape_predictor_68_face_landmarks.dat'
+detector = dlib.get_frontal_face_detector()
+predictor = dlib.shape_predictor(shape_predict)
 
-if vc.isOpened(): #try to get the first frame
-    rval, frame = vc.read()
-else:
-    rval = False
-
-while True:
-    if rval == True:
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-        faces = faceCascade.detectMultiScale(
-            gray,
-            scaleFactor=1.3,
-            minNeighbors=5,
-            minSize=(30,30),
-            flags=cv2.CASCADE_SCALE_IMAGE
-        )
-
-#        print( len(faces))
-        # Draw a rectangle around the faces
-        for (x, y, w, h) in faces:
-            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-
+'''
         # Display the resulting frame
         cv2.imshow('Video', frame)
 
@@ -41,4 +29,4 @@ while True:
 # When everything is done, release the capture
 vc.release()
 cv2.destroyAllWindows()
-
+'''
