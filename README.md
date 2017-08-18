@@ -39,3 +39,6 @@ Pefrormance Tracking for facial recognition in streaming video - not done
 
 # Future Objectives:
 Upgrade to Fedora 26 to get Facial Landmarks script working for Python3
+
+# License
+This project is done under the MIT License. Any file with the terms of the MIT License can be used.

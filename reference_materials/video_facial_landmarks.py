@@ -25,7 +25,7 @@ args = vars(ap.parse_args())
  
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor
-print("[INFO] loading facial landmark predictor...")
+print("[INFO] Loading facial landmark predictor...")
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor('./shape_predictor_68_face_landmarks.dat')
 	#args["shape_predictor"])
@@ -42,7 +42,7 @@ while True:
 	# have a maximum width of 400 pixels, and convert it to
 	# grayscale
 	frame = vs.read()
-	frame = imutils.resize(frame, width=400)
+	frame = imutils.resize(frame, width=800)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
 	# detect faces in the grayscale frame
