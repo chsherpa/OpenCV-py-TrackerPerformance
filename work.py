@@ -27,7 +27,6 @@ SOFTWARE.
 '''
 import imutils
 from imutils.video import VideoStream
-from imutils import face_utils
 import cv2
 
 '''
@@ -43,7 +42,7 @@ Detection Method
 @param img Image
 @param cascade The Haar facial cascade used to detect the box
 '''
-def detect(img, cascade):
+def detection(img, cascade):
     rects = cascade.detectMultiScale(
         img,
         scaleFactor=1.2,
@@ -52,6 +51,7 @@ def detect(img, cascade):
         flags=cv2.CASCADE_SCALE_IMAGE
     )
 
+    #Check to return shifted rect for image correction
     if len(rects) == 0:
         return []
     rects[:,2:] += rects[:,:2]
@@ -68,12 +68,15 @@ def drawDetectBox(img, rects, BGRcolor):
     for x1, y1, x2, y2 in rects:
         cv2.rectangle(img, (x1,y1), (x2,y2), BGRcolor, 1, 0, 0)
 
+#MAIN
 if __name__ == '__main__':
     faceDetectionSchema = cv2.CascadeClassifier(faceHaarCascade)
     eyeDetectionSchema = cv2.CascadeClassifier(eyeHaarCascarde)
 
-    #Video Capture CV2 method
-    #Value zero reflects default video capture
+    # Video Capture CV2 method
+    # Value zero reflects default video capture
+    # First try call imutils library VideoStream: Much more stable than
+    # native CV2 library video capture
     try:
         cam = VideoStream().start()
     except:
@@ -89,18 +92,21 @@ if __name__ == '__main__':
         gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
         #gray = cv2.equalizeHist(gray)
 
-        rects = detect(gray,faceDetectionSchema)
+        rects = detection(gray, faceDetectionSchema)
         vis = img.copy() #Make a frame copy for reference
 
         color=(11,134,184) #Goldenrod
         #Color is in BGR color, RGB backwards
         drawDetectBox(img, rects,color)
 
+        # Open Video
         cv2.imshow('Simple Detect', img)
 
+        # Press esc to quit
         if cv2.waitKey(20) == 27:
             break
-    cv2.destroyAllWindows()
+
+cv2.destroyAllWindows()
 
 
 

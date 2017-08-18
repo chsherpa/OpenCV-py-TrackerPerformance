@@ -3,6 +3,7 @@ Student Project for using Python Tracker with performance metrics projected alon
 
 # Dependencies:
 OpenCV : Instruction for installation for the Fedora can be found on docs.opencv.org/trunk/dd/dd5/tutorial_py_setup_in_fedora.html
+Language: Python 3.5
 
 For Fedora, it is much easier to install OpenCV using the dnf package manager than going out and compiling from source.
 It is more likely than not that there'll be a missing package.
@@ -60,4 +61,4 @@ Pefrormance Tracking for facial recognition in streaming video - not done
 Upgrade to Fedora 26 to get Facial Landmarks script working for Python3
 
 # License
-This project is done under the MIT License. Any file with the terms of the MIT License can be used.
+This project is done under the MIT License.
